@@ -9,11 +9,12 @@
 	\usepackage{mdframed}
 	\usepackage{xcolor} 
     \usepackage[utopia]{mathdesign}
-\newmdtheoremenv[%
-linecolor=gray,leftmargin=20,%
-rightmargin=-.4cm,
-backgroundcolor=gray!4,%
-innertopmargin=0pt,%
+\newmdtheoremenv[% ACA PODES MODIFICAR LAS PROPIEDADES DEL CODIGO {code}
+font=\fontsize{12pt}{16pt},
+linecolor=gray,leftmargin=-2.6cm,%
+rightmargin=-2.6cm,
+backgroundcolor=gray!5,%
+innertopmargin=8pt,%
 ntheorem]{code}{Codigo}[section]
 %-----------------------------------------------------------
 \begin{document}  %Aqui empieza el documento
@@ -191,5 +192,13 @@ xlabel('Con \LaTeX Todo es Mejor','Interpreter','latex')
 \centering
 \includegraphics[width=\textwidth]{graf/g6.eps}
 \end{figure}
+% \begin{code}
+
+% La linea de abajo es para 
+% \begin{verbatim}
+
+% %   Tome los terminos de sumatoria en string o funcion anonima. Usar t y n.
+% \end{verbatim}
+% \end{code}
 \end{document} 
 
