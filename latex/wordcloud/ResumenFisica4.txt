@@ -1,0 +1,378 @@
+%Preparando documento
+\documentclass[10pt,twocolumn]{article}
+
+
+\usepackage[utf8x]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm,headheight=28pt]{geometry}
+%No usar a no ser que sea una emergencia!
+%\usepackage[no-math]{fontspec}
+%\setmainfont{Comic Sans MS}
+\usepackage{booktabs}
+\usepackage{graphicx}
+%Chiches para escribir matematica super linda
+\usepackage{siunitx}
+\sisetup{
+detect-family,
+detect-display-math = true, 
+output-decimal-marker = {,} %Esto decide si el separador decimal es coma o punto
+}
+\usepackage{fontawesome}
+
+\usepackage{mathtools}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+%\usepackage{fourier}%NO USAR
+
+%Fuente (Helvetica, Euclid o ltnmdrn para math, re piola el Euclid)
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[scaled=1]{helvet}
+\usepackage[format=plain,
+            labelfont={bf,it},
+            textfont=it]{caption}
+%TITLE
+\title{ \textbf{Compendio de formulas no oficial para Física IV - 93.44}}
+\author{pwhittingslow@itba.edu.ar}
+%Comandos customized
+%Para usar el simbolo de peligro
+\newcommand{\ojo}{\text{\faExclamation}}
+
+%
+\newcommand{\lorenz}{\frac{1}{\sqrt[]{1-\frac{v^2}{c^2}}}}
+\newcommand{\Psixt}{\Psi (x,t)}
+\newcommand{\psix}{\psi (X)}
+%\newcommand{\nabla}{\rotatebox[origin=c]{180}{\Delta}}
+\newcommand{\glossentry}[2]{$#1$\indent #2 \par \vspace{.4cm} } %Entradas para glosario
+\newcommand{\inpar}[1]{\Bigg( #1 \Bigg)} %PArentheses grandes
+\newcommand{\formu}[2]{ #1 $$#2$$ \par \vspace{.4cm} }%Formula
+\newcommand{\formuc}[2]{ #1 $$#2$$ } %Formula sin espacio libre al final
+\newcommand{\cte}[3]{ $#1$= \SI{#2}{#3} \par \vspace{.4cm} }
+\newcommand{\boltz}{k_\textrm{B}}
+\newcommand{\lambdadb}{\lambda_{\textrm{DB}}}
+\newcommand{\frecdb}{f_{\textrm{DB}}}
+\newcommand{\lspeed}{\textit{\textrm{c}}}
+\newcommand{\inicial}{\textrm{i}}
+\newcommand{\final}{\textrm{f}}
+\newcommand{\Rydberg}{\textrm{R}}
+\newcommand{\A}{\textrm{A }}
+\newcommand{\B}{\textrm{B }}
+\newcommand{\corr}{\textrm{\color{red} posible error }}
+\begin{document}
+
+\maketitle
+\section*{\centering Glosario} %Aca empieza el Glosario. Ordenado alfabeticamente, primero letras latinas, ultimo letras griegas.
+{
+\glossentry{B}{Campo magnético.}
+\glossentry{c}{Velocidad de la luz.}
+\glossentry{E}{Energía total o campo eléctrico.}
+\glossentry{E_0=m_0c^2}{Energía en reposo.}
+\glossentry{E_T=K+E_0=\gamma m_0c^2}{Energía total.}
+\glossentry{e}{Poder emisivo o carga elemental.}
+\glossentry{\vec{F}=\frac{d\vec{p}}{dt}=\frac{dm\vec{u}}{dt}}{Fuerza.}
+\glossentry{f,\nu}{Frecuencia.}
+\glossentry{f_0}{Frecuencia de corte.}
+\glossentry{h=2\pi \hbar}{Constante de Planck.}
+\glossentry{J(\lambda,T)}{Función de intensidad espectral.}
+\glossentry{K}{Energía cinética.}
+\glossentry{\boltz}{Constante de Boltzmann.}
+\glossentry{\ell}{Longitud.}
+\glossentry{\ell_p,\,\ell_0}{Longitud propia}
+\glossentry{m=\gamma m_0}{Masa aparente o masa en reposo.}
+\glossentry{m_0}{Masa en reposo.}
+\glossentry{\vec{p}=\frac{m_0\vec{v}}{\sqrt[]{1-\frac{v^2}{c^2}}}=\gamma m_0\vec{v}}{Cantidad de movimiento.}
+\glossentry{q}{Carga.}
+\glossentry{\Rydberg}{Constante de Rydberg.}
+\glossentry{\vec{u},v}{Velocidad.}
+\glossentry{u(\lambda,T)}{Función de distribución de energía.}
+\glossentry{Z}{Numero Atómico.}
+\glossentry{\beta=\frac{v}{c}}{Velocidad relativa a la de la luz.}
+\glossentry{\gamma=\lorenz}{Factor de Lorentz.}
+\glossentry{\varepsilon}{Emisividad.}
+\glossentry{\varepsilon_0}{Permitividad, constante dieléctrica}
+\glossentry{\phi}{Función de trabajo.}
+\glossentry{\lambda}{Longitud de onda.}
+\glossentry{\Psi}{Densidad de probabilidad.}
+\glossentry{\psi}{Función posición.}
+\glossentry{\sigma}{Constante Stefan-Boltzmann.}
+
+{\tiny Algunas letras pueden tomar diferentes sentidos dependiendo del contexto. Por ejemplo, en este documento se va tener en cuenta que $m$ puede ser masa aparente o masa en reposo mientras que $m_0$ siempre es masa en reposo. Noten que el libro siempre usa $m$ para representar masa en reposo.}
+ }
+\section{Relatividad Especial}
+
+\begin{align*}
+x&=(x^\prime +vt^\prime)\gamma \\
+t &= \bigg( t^\prime +\frac{vx^\prime}{c^2}\bigg) \gamma \\
+x^\prime &= ( x-vt)\gamma \\
+t^\prime &= \bigg(  t-\frac{vt}{c^2}  \bigg)\gamma \\
+\ell &= \frac{\ell_p}{\gamma} \\
+\end{align*}
+\subsection{Efecto Doppler}
+Se tienen dos relojes, \A y \B sincronizados en $x_0=0$ y $t_0=0$. \B se mueve sobre el eje $x$ positivo a una velocidad $v$ y emite una señal en $x_\B$, $t_\B$.\par 
+$t_\A$ es el tiempo que pasa en \A desde $t_0$ hasta que \B emite la señal. Cuando la señal llega al reloj \A este marca $t_\A^\prime$.   $t_\B^\prime$ es el tiempo que marca el reloj \B cuando se inicia la comparación.\corr
+$$t_\B^\prime=\bigg( t_\A -\frac{v}{c^2}vt_\A\bigg) \gamma =\bigg( 1-\frac{v^2}{c^2}\bigg)\gamma t_\A= \frac{t_\A}{\gamma} $$
+Debo comparar $t_\A^\prime$ con $t_\B^\prime$.
+$$x_\B =(t_\A^\prime  -t_\A )c=vt_\A\rightarrow t_\A^\prime=\bigg( 1+\frac{v}{c}\bigg) t_\A$$
+$$\therefore \frac{t_\B^\prime}{t_\A^\prime}=\sqrt[]{\frac{1-\frac{v}{c}}{1+\frac{v}{c}}} $$
+Expresion en funcion de frecuencias:
+$$f_\textrm{obs}=f_\textrm{fuente} \;\sqrt[]{\frac{1-\frac{v}{c}}{1+\frac{v}{c}}} $$
+ %Interacciones ---------------->
+\section{Interacciones}
+
+
+\formu{Expresión para una fuerza que actúa colineal a la velocidad.}{F=\frac{dp}{dt}=\frac{dmu}{dt}=\frac{d}{dt}\inpar{\:\frac{m_0u}{\sqrt[]{1-\frac{u^2}{c^2}\:}}}=\frac{m_0}{(1-\beta^2)^{3/2}}\frac{du}{dt}}
+
+Derivación de energía:
+\begin{equation} \label{eq1}
+dW=\inpar{\frac{dm}{dt}\vec{u}+m\frac{d\vec{u}}{dt}}\cdot \vec{u}dt=u^2dm+mudu
+\end{equation}
+\begin{align*}
+\gamma^2 m^2 &= m_0^2    \\
+m^2c^2-m^2u^2&= m_0^2c^2 \\
+2mc^2dm-2mu^2dm-2m^2udu &= 0 
+\end{align*}
+\begin{equation} \label{eq2}
+c^2dm=u^2dm+mudu
+\end{equation}
+
+reemplazando \ref{eq2} en \ref{eq1},
+\formuc{Integrando de un punto inicial donde la energía cinetica es cero $u_A=0 \Rightarrow m=m_0$, se tiene que el trabajo $W$ es igual a $K$.}{ W=\int_{m_0}^{m}c^2dm=mc^2-m_0c^2=K}
+{De aquí también se obtiene que $E=\gamma m_0c^2$. Se considera que la energía total es una especie de energía cinetica.
+\par \vspace{.3cm}}
+\begin{equation} \label{eq3}
+E^2=p^2c^2+(m_0c^2)^2
+\end{equation}
+
+\ref{eq3} es otra expresión para la energía total. Esta se puede aplicar para partículas sin masa en reposo como los fotones:
+\begin{align*}
+E &= pc \\
+mc^2&=pc \\
+m&=\frac{p}{c}
+\end{align*}
+{En otras palabras, un fotón tiene cantidad de movimiento proporcional a su masa aparente. Si nos adelantamos al la relación de De Broglie:}
+$$ \lambda=h/p$$
+$$\therefore m=\frac{h}{\lambda c} $$
+\formu{Una invariante bajo una transformación de Lorentz:}{E^2-p^2c^2}
+
+\formuc{La energía total permanece constante para un sistema de partículas.}{E_{antes}=E_{despu\acute{e}s}}
+$$\sum_{i}^{n_1}\gamma_i m_ic^2\bigg|_{t_1}=\sum_{j}^{n_2}\gamma_j m_jc^2\bigg|_{t_2}$$
+{\par \vspace{.5cm}}
+\formu{Expresión comúnmente llamada fuerza de Lorentz}{\vec{F}=q\vec{E}+q\vec{u}\times\vec{B}}
+\formuc{La energía cinetica de una partícula en reposo de carga $q$ sometida a voltaje $V$.}{K=qV}
+De acá sale la unidad \si{\eV}, el \emph{electronvolt}, definido como la energía que tiene un electrón que es acelerado a través de una diferencia de potencial de 1 volt. \SI{1}{\electronvolt}=\SI{1.602e-19}{\joule}. Útil para describir todo tipo de proceso atómico!
+
+%Cuerpos Negros----------------->
+\section{Cuerpos Negros}
+La ley de Rayleigh-Jeans intenta describir la radiación espectral de un cuerpo negro. Note que a medida que $\lambda$ se acerca a longitudes de onda pequeñas $e^{\frac{hc}{\lambda \boltz T}}$ tiende a infinito, un problema que se conoció como la \emph{ultraviolet catastrophe}.
+$$J(\lambda,T)_{\textrm{RJ}}=\frac{2\pi c\boltz T}{\lambda^4} \corr $$
+Derivación:
+$$J(\lambda,T)=\frac{c}{4}u(\lambda,T)$$
+$$u(\lambda,T)=N(\lambda)\big<E\big>$$
+$$ N(\lambda)=\frac{8\pi}{\lambda^4} $$
+Rayleigh considera la energía continua: 
+$$\big<E\big>_{\textrm{RJ}}=\boltz T $$
+En 1900 Planck propone que la energía se puede expresar como una suma de paquetes discretos, o \emph{cuanta} (del latín quanta, cantidades) y llega a la siguiente expresión para el valor medio de la energía:
+$$ \big<E\big>=\frac{hc}{\lambda\big(e^{\frac{hc}{\lambda \boltz T}}-1\big)}$$
+La intensidad espectral[\si{J.m^{-3}s^{-1}}], o la intensidad de la  radiación emitida por un cuerpo negro viene dada por la ley de Planck:
+
+$$ J(\lambda,T)=\frac{2\pi hc^2}{\lambda^5}\frac{1}{e^{\frac{hc}{\lambda \boltz T}}-1 } $$
+
+$$J(f,T)=\frac{2\pi hf^3}{c^2}\frac{1}{e^{\frac{hf}{ \boltz T}}-1 } $$
+Si integramos sobre un intervalo de longitud de onda $[\lambda_L,\lambda_H]$ obtenemos el poder emisivo [\si{\watt \per \meter \squared}] que es la cantidad de energía radiante emitida por unidad de superficie.
+$$e(\lambda,T)=\int_{\lambda_L}^{\lambda_H}J(\lambda,T)d\lambda $$
+Antes del descubrimiento de Planck se había establecido la ley de Stefan-Boltzmann para la emisión de cuerpos negros [\si{\watt \per \meter \squared}] que no es mas que la integración de la distribución de Planck a lo largo de todas las longitudes de onda del espectro de frecuencia:
+$$e_{Total}=\sigma T^4 = \int_{0}^{\infty}J(\lambda,T)d\lambda =\frac{2\pi^5\boltz ^4}{15c^2h^3}\cdot T^4$$
+$$\therefore \sigma = \frac{2\pi^5\boltz ^4}{15c^2h^3} $$
+Los cuerpos reales emiten una fracción del nivel de energía que cuerpos negros. Un cuerpo con emisividad menor a 1 deja de ser un cuerpo negro y se refiere como cuerpo gris. $0<\varepsilon<1$
+$$e_{Total}=\varepsilon \sigma T^4 $$
+Ley de desplazamiento de Wien, donde $b$=\SI{2.89777e-3}{\meter \kelvin} es la constante de proporcionalidad:
+$$\frac{dJ(\lambda,T)}{d\lambda}=0\Rightarrow \lambda_{m\acute{a}x}=
+\frac{b}{T}$$
+Para obtener la aproximacion de Wien con la funcion de densidad de energia de Planck se supone $hc\gg\lambda \boltz T$  obteniendo asi:
+
+$$u(\lambda,T)_\textrm{W}=\frac{8\pi hc}{\lambda^5 e^{  \frac{hc}{\lambda \boltz T} }} $$
+%Efecto Fotoeléctrico ------------>
+\section{Efecto Fotoeléctrico}
+La expresión para la energía máxima que puede tener un electrón desprendido de un metal por un fotón de frecuencia $f$:
+$$K_{m\acute{a}x}=hf-\phi$$
+A cierta frecuencia todo electrón que se desprende queda en reposo ($K_{m\acute{a}x}=0$), esta es la frecuencia de corte $f_0$. $f_0$ y $\phi$ son únicos para cada metal.
+$$f_0=\frac{\phi}{h} $$
+Como pueden ver la energía del electrón desprendido no depende de la intensidad de la luz. El efecto fotoeléctrico ocurre 1:1$\rightarrow$ un fotón arranca un electrón. En un experimento similar se mostró que si se bombardea un metal con electrones... se liberan fotones con la relación 1:1 ¡Oh casualidad!. \textbf{El fotón con energía máxima va ser el que surge del electrón con energía máxima que pierde toda su energía en \emph{UNA} interacción} (Ley de Duane-Hunt):
+$$\textrm{Bremsstrahlung:   }\lambda_{min}=\frac{hc}{qV}$$
+El efecto Compton (o dispersión Compton) consiste en el aumento de la longitud de onda de un fotón cuando choca con un electrón libre y pierde parte de su energía. La frecuencia o la longitud de onda de la radiación dispersada depende únicamente del ángulo de dispersión:
+$$\lambda ^{\prime}-\lambda_0=\frac{h}{m_ec}(1-\cos \theta) $$
+La combinación $h/m_ec$ se denomina la longitud de onda de Compton del electrón ($0.0243$ \si{\angstrom}).
+%$$\therefore p=\frac{hf}{c}$$
+
+%MODELO DE BOHR ATOMOS ----------------------------->
+\section{Modelo del Átomo de Bohr}
+Serie de J. Balmer (1886) para el hidrógeno.
+$$ \lambda = \SI{3645.6E-8}{\cm} \inpar{\frac{n^2}{n^2-2^2} }$$
+La serie de Rydberg se puede aplica a todo elemento químico similar al hidrógeno. Un átomo \emph{hidrogenoide} tiene la misma configuración electrónica que el hidrógeno. La serie de Balmer se da con $n_\final=2$ y $Z=1$(hidrógeno) como es de esperar.
+$$ \frac{1}{\lambda}=Z^2_{\textrm{eff} }\Rydberg\inpar{\frac{1}{n^2_\final}-\frac{1}{n^2_\inicial}} $$
+Bohr dice que hay ``estado estacionarios'' para electrones en su estado de menor energía $n=1$. Si el electrón es excitado adquiere un nivel superior al inicial $n_\textrm{f}>n_\inicial$. Para elementos con $Z>3$ \emph{no hidrogenoides} se produce el \textbf{efecto de apantallamiento} $Z_{\textrm{eff} }=Z-1$ debido a la reducción de la carga nuclear efectiva sobre la nube electrónica.
+
+\begin{table}[h]
+\centering
+\label{my-label}
+\begin{tabular}{lll}
+\multicolumn{3}{l}{} \\
+   Serie de Lyman (uv)   & $n_\final=1$      &$n_\inicial=2,3,\dots$      \\
+Serie de Balmer(visible-uv)      & $n_\final=2$      &$n_\inicial=3,4,\dots$      \\
+Serie de Paschen(IR)      &$n_\final=3$       &$n_\inicial=4,5,\dots$      \\
+Serie de Brackett(IR)      &$n_\final=4$       &$n_\inicial=5,6,\dots$      \\
+Serie de Pfund(IR)      &$n_\final=5$       &$n_\inicial=6,7,\dots$     
+\end{tabular}
+\caption{Algunas series espectrales para el átomo de hidrógeno.}
+\end{table}
+
+\subsection{Hipótesis del modelo de Bohr}
+\textbf{Hipótesis 1.} El electrón se mueve en una órbita circular alrededor del núcleo según lo establecen las leyes de la mecánica clásica.
+
+\textbf{Hipótesis 2.} El electrón solo puede moverse en órbitas circulares alrededor del núcleo en las cuales se cumpla que el modulo del momento cinético del electrón es un numero entero de veces $\hbar$.
+$$\vec{L_0}=\vec{r}\times \vec{p} $$
+\begin{equation} \label{bohrVelocity}
+L_0=mrv=n\hbar ,\indent n=1,2,3, \dots
+\end{equation}
+
+\textbf{Hipótesis 3.} Mientras el electrón se mueve en una órbita permitida la energía del átomo ($E$) permanece constante.
+%bohrEnergy
+\begin{equation} \label{bohrEnergy}
+E=K+U=\frac{1}{2}mv^2-\frac{1}{4\pi \varepsilon_0}\frac{Z e^2}{r}
+\end{equation}
+Para obtener el hipotético tamaño del radio de Bohr reemplazamos la velocidad de \eqref{bohrVelocity} en \eqref{bohrEnergy2}.
+%bohrEnergy
+\begin{equation} \label{bohrEnergy2}
+\frac{1}{4\pi\varepsilon_0}\frac{Ze^2}{r^2}=m\frac{v^2}{r}
+\end{equation}
+
+$$r=\frac{n^2\hbar^2 4\pi \varepsilon_0}{m_eZe^2} $$
+Reemplazando la velocidad en la ecuación \eqref{bohrEnergy} obtenemos que es negativa la energía:
+\begin{equation}\label{bohrEnergy3}
+E=-\frac{1}{2}\frac{1}{4\pi\varepsilon_0}\frac{Ze^2}{r}<0\indent \ojo
+\end{equation}
+
+
+\textbf{Hipótesis 4.} Cuando el átomo (indirectamente, el electrón) se encuentra en un estado de energía $E_i$ espontáneamente pasa a otro estado $E_j$, tal que $E_j<E_i$, emitiendo un fotón cuya energía es $hf_{ij}=E_i-E_j$.
+Solo hay una emisión de fotón cuando hay una desexcitación según el modelo de Bohr. 
+\subsection{Corrección al centro de la masa}
+\textbf{Hipotesis 1.} 
+$$ \frac{1}{4\pi \varepsilon_0}\frac{Ze^2}{r+R}^2=\frac{mv^2}{r} $$
+\textbf{Hipotesis 2.}
+$$rmv+RMu=n\hbar=(r+R)\mu \omega $$
+donde $\mu = \frac{m\cdot M}{m+M}$. \par \vspace{.3cm}
+\textbf{Hipotesis 3.}
+$$E=K+U=\frac{p^2}{2M}+\frac{p^2}{2m}-\frac{1}{4\pi\varepsilon_0}\frac{Ze^2}{r+R}=$$ $$ \frac{p^2}{2}(M^{-1}+m^{-1})- \frac{1}{4\pi\varepsilon_0}\frac{Ze^2}{r+R}=\frac{1}{2}\mu \omega^2- \frac{1}{4\pi\varepsilon_0}\frac{Ze^2}{r+R}$$
+de H1:
+$$ \frac{1}{4\pi\varepsilon_0}\frac{Ze^2}{(r+R)^{\cancel{2}} }=\frac{\mu\omega^2}{\cancel{ r+R} } $$
+de H2:
+$$ \omega^2=\inpar{\frac{n\hbar}{\mu(R+r)}}^2 $$
+$$\Rightarrow \frac{1}{4\pi\varepsilon_0} \frac{Ze^2}{ \cancel {r+R} }=\cancel{\mu} \frac{n^2\hbar^2}{\mu^{\cancel{2}} (r+R)^{\cancel{2} } }\Rightarrow r+R=\frac{r\pi\varepsilon_0 n^2R^2}{Ze^2 \mu} $$
+en H3.
+$$E= - \frac{1}{2}\frac{1}{4\pi\varepsilon_0}\frac{Ze^2}{r+R}=-\frac{1}{2}\frac{Z^2e^4 \mu}{(4\pi\varepsilon_0)^2 n^2\hbar^2} $$
+$$\Delta E =\frac{Z_{\textrm{eff}}^2e^4 \mu }{2(4\pi\varepsilon_0)^2\hbar^2} \inpar{\frac{1}{n^2_\final} - \frac{1}{n^2_\inicial}}$$
+
+
+%-------------------> Mecanica Cuantica
+\section{Mecánica Cuántica}
+\subsection{Principio de la Incertidumbre}
+No se puede medir simultáneamente y con precisión arbitraria la posición y $\vec{p}$ de un objeto cuántico. Sean $\Delta x$ y $\Delta p$ los errores en una medición ($\Delta t$ es un \emph{intervalo} de tiempo).
+\begin{align*}
+\Delta x. \Delta p_x&\geq \frac{\hbar}{2} \\
+\Delta y. \Delta p_y&\geq \frac{\hbar}{2} \\
+\Delta z. \Delta p_z&\geq \frac{\hbar}{2} \\
+\end{align*}
+Si $\Delta x =0 \Rightarrow \Delta p_x\rightarrow \infty$, esto no se puede lograr en una medición simultanea.\par
+Tampoco se puede medir simultáneamente y con precisión arbitraria a la energía de un sistema y conocer el intervalo de tiempo durante el cual el sistema permanece en ese estado de energía.
+$$\Delta E. \Delta t \geq \frac{\hbar}{2} $$
+Se puede estimar el tiempo de desexcitación: $\Delta t \geq \frac{\hbar}{2\Delta E}$ 
+\subsection{Mecánica cuántica ondulatoria (no relativista)}
+\textbf{Hipótesis 1.} A todo sistema físico le corresponde para su caracterización una función de onda o función de estado $\Psi$, que es una función de la posición y el tiempo. Esta \emph{Normalizada} y que junto en sus derivadas parciales primeras son monovaluada (uniforme), continua y acotada (finita) en el espacio de configuración del sistema.
+$$ \Psi =\Psi (\vec{r},t)=\Psi (x,y,z,t) $$
+
+$$\partial w=\partial x \partial y \partial z\xrightarrow[]{\text{1D}} \partial w= dx$$
+\textbf{Hipótesis 2.} Según la \emph{Interpretación probabilística} de $\Psi$ o \emph{Interpretación de Copenhagen}, la cantidad $\Psi^{*}(\vec{r},t).\Psi(\vec{r},t)\partial w$ (Postulado de Max Born) representa la probabilidad de localizar un objeto cuántico en el instante de tiempo $t$ en el elemento de volumen $\partial w$ que esta centrado en el punto $\vec{r}$ donde $\Psi$ es variable compleja.
+$$\Psi^{*}.\Psi = \big( \Psi(\vec{r},t)\big)^2 $$
+
+$$ \int_\Omega |\Psi(\vec{r},t)|^2\partial w $$
+
+\textbf{Hipótesis 3.} La función de onda es solución de la ecuación de Schrödinger
+\begin{equation} \label{schroddiff}
+\frac{\hbar }{2m} \nabla^2 \Psi(\vec{r},t)+U(\vec{r},t)\Psi(\vec{r},t)=i\hbar \frac{\partial \Psi(\vec{r},t)}{\partial t} 
+\end{equation}
+
+Si consideramos una función de potencial independiente del tiempo podemos separar la función densidad de tal forma que $\Psi (\vec{r},t)=\psi(\vec{r}) \Phi(t)$. Aprovechando esta separación de variables podemos despejar la ecuación de Schrödinger \eqref{schroddiff} de tal forma que un lado depende de $\vec{r}$ y el otro depende de $t$: 
+$$\frac{1}{\psi(\vec{r})}\bigg[ -\frac{\hbar^2}{2m}\nabla^2 \psi(\vec{r}) +U(\vec{r})\psi(\vec{r}) \bigg]=\frac{i\hbar}{\Phi(t)}\frac{\partial \Phi(t)}{\partial t} =\lambda $$
+$\lambda$ se conoce como la constante de separación por la misma razón por la que a esta técnica para resolver ecuaciones diferenciales parciales se llama separación de variables. \par
+Para ejercicios en una dimensión (1D) se tiene:
+$$\frac{1}{\psi(x)} \bigg[ -\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2}+U(x)\psi(x) \bigg]=i\hbar \frac{1}{\Phi(t)}\frac{d\Phi(t)}{dt}$$
+Laburando por separado sabiendo que $\lambda=E$ y que $\omega=2\pi\frecdb=\frac{E}{\hbar}$:
+$$\frac{i\hbar}{\Phi(t)}\frac{\partial\Phi(t)}{\partial t}=\lambda \xrightarrow[]{\partial \rightarrow d} \frac{d\Phi(t) }{\Phi(t)}=\frac{\lambda dt}{i\hbar}$$ 
+\begin{align*}
+\ln\Phi(t)&=\frac{\lambda t}{i\hbar}+\alpha \\
+\Phi(t)&=e^{\frac{\lambda t}{i\hbar}} e^\alpha \\
+\Phi(t)&= Ce^{i\omega t}
+\end{align*}
+Del otro lado tenemos la ecuación de Schrödinger independiente del tiempo o de estado estacionario:
+$$\frac{1}{\psi(\vec{r})}\bigg[ -\frac{\hbar^2}{2m}\nabla^2 \psi(\vec{r}) +U(\vec{r})\psi(\vec{r}) \bigg]= E$$
+Que se puede reorganizar de la siguiente forma, conocida como la función de Schrödinger independiente del tiempo:
+\begin{equation} \label{schrodpos}
+\nabla^2 \psi(\vec{r}) +\frac{2m}{\hbar^2}\big(E- U(\vec{r})\big) \psi(\vec{r})=0
+\end{equation}
+
+\subsection{Problemas con $\Psi$}
+$$  \Psixt =(Ae^{ikx} + Be^{ikx})Ce^{-iwt } $$
+$$  \Psixt = (A^\prime e^{ikx}+B^\prime e^{-ikx})e^{-iwt}  $$
+El termino $A^\prime e^{ i(kx-wt) }$ describe un frente de onda con sentido en $x$ positivo. 
+
+$$\Psixt= \psix Ce^{-iwt} $$
+$$ |\Psixt |^2=|\psix|^2C^2 $$
+$$\Psixt =\psix e^{-i\omega t} $$
+$$    $$
+\clearpage
+%Anexo----------------->
+\section{Anexo}
+\subsection{Constantes}
+\begin{align*}
+e&=\SI{1.602e-19}{\coulomb}\\
+h&=\SI{6.626e-34}{\meter \squared \kg \per \second}\\
+\boltz &=\SI{1.381e-23}{\meter \squared \kg \per \second \squared \per \kelvin }\\
+b&=\SI{2.898e-3}{\meter \kelvin}\\
+\sigma&=\SI{5.670e-8}{\watt \meter ^{-2} \kelvin ^{-4} }\\
+m_p&=\SI{1.673e-27}{\kg}\\
+    &=\SI{938.3}{\MeV/\lspeed ^2}\\
+m_n&=\SI{1.675e-27}{\kg}\\
+    &=\SI{939.6}{\MeV/\lspeed ^2}\\
+m_e&=\SI{9.109e-31}{\kg}\\
+    &=\SI{0.5110}{\MeV/\lspeed ^2}\\
+m_{\pi^0}&=\SI{135.0}{\MeV/\lspeed ^2}\\
+m_{\pi^{\pm}}&=\SI{139.6}{\MeV/\lspeed ^2}\\
+m_{\mu}&=\SI{105.7}{\MeV/\lspeed ^2}\\
+m_{\tau}&=\SI{1777}{\MeV/\lspeed ^2}\\
+m_{\nu}&<\SI{0.120}{\eV/\lspeed ^2}\\
+G  &=\SI{6.674e-11}{\meter \cubed \per \kilogram \per \second \squared}\\
+\Rydberg &=\SI{1.097e7}{\per \meter}  \\
+\end{align*}
+
+
+\subsection{Tablas}
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lll@{}}
+Clase & $\lambda$ & Energía \\ \hline
+Radio & 1-10 \si{\meter} & 100-1000 \si{\nano \eV}  \\
+Micro &1-100 \si{\mm}  & 1-1000\si{ \micro \eV} \\
+Infrarrojo & 1-1000 \si{\micro\meter} &1-120 \si{\milli \eV}  \\
+Visible & 400-700 \si{\nano \meter} &$\sim$ 1 \si{\eV} \\
+UV &10-400 \si{\nano \meter} &3-100\si{\eV}  \\
+Rx &100-1000 \si{\pico \meter} $\sim$ 1\si{\angstrom} &100-1000 \si{\eV}  \\ \bottomrule
+\end{tabular}
+\caption{Espectro electromagnético.}
+\label{espectro}
+\end{table}
+
+
+
+
+\end{document}

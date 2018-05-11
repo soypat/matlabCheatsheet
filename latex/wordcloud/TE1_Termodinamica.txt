@@ -1,0 +1,233 @@
+	\documentclass[12pt, a4paper,titlepage]{article}
+	\usepackage[spanish]{babel}
+	\selectlanguage{spanish}
+	\usepackage[utf8]{inputenc} % Aca va el setup para el codigo.
+    \usepackage{graphicx}
+	\usepackage{enumitem}
+    \usepackage{soul}
+    \usepackage{cancel}
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+%PARA CAMBIAR LENGUAJE DE SPELLCHECK
+%https://www.overleaf.com/help/60-can-i-change-the-spell-check-language-to-eg-spanish#.WepYjlWGPD4
+%-----------------------------------------------------------
+\begin{document}  %Aqui empieza el documento
+\begin{titlepage} %Esta es la caratula
+\centering
+{\scshape\Huge Termodinámica \par}
+\vspace{1cm}
+{\scshape\LARGE Trabajo Práctico 1 \par}
+\vspace{2cm}
+{\scshape\Large\textbf{Grupo 7} \par}
+\medskip %medskip,smallskip,vspace son todos comandos para dejar espacio en blanco entre cosas
+ \textsc{\large De Ruschi Ines - 56458\\Lechleiter Axel Klaus - 56175\\Franceschini Nicolas Julian - 56017\\Whittingslow Patricio - 55423\\Salvarregui Castro Sebastián - 50087\\McCluskey Tomás - 55399\\Cardozo Jorge - 57331 }
+
+\end{titlepage} %Termina la caratula
+%==========================================================================
+\begin{abstract}
+
+ Se analizó el rendimiento de  una bomba mediante un circuito  de presión variable. Del mismo modo  se obtuvieron los valores de potencia calorífica intercambiada, entropia,  exergía y trabajo termodinámico perdido. %No seria Trabajo Termodinámico perdido? -pw
+\end{abstract}
+%==========================================================================    RESUMEN
+\section{Introducción}
+\indent Para siete caudales distintos, se efectúan varias mediciones correspondientes.  Obteniendo: 
+\begin{itemize} 
+\item La presión a la entrada ($p_{in}$) y a la salida ($p_{out}$) en la bomba 
+\item La temperatura a la entrada ($T_{in}$) y a la salida ($T_{out}$) de la bomba teniendo en cuenta la Temperatura ambiente ($T_0$)
+\item Potencia consumida por el motor ($\dot{W}_e$)
+\item Masa de agua en el balde ($\Delta m$)
+\item Tiempo de llenado ($\Delta t$)
+\end{itemize}
+
+\indent El sistema analizado en la práctica es un circuito cerrado de conducción de agua, conectado a una bomba centrífuga.  Para medir la temperatura y la presión se ubican los debidos instrumentos de medición en la entrada y la salida  de la bomba, de modo tal que la variación de energía potencial se vuelve despreciable para esas mediciones. La variación de la energía cinética también se considera despreciable ya que la sección se mantiene igual a la entrada y a la salida de la bomba. A partir de estos supuestos, y haciendo que todas las mediciones se tomen en régimen estacionario, del balance energético con la primer ley termodinámica aplicada en volúmenes de control obtenemos:
+$$\dot{U}_{V.C.} = \dot{Q} - \dot{W} - \dot{m}(\Delta h + \Delta ec + \Delta ep) = 0 $$
+Por régimen estacionario esto es igual a 0. Ademas, despreciamos el cambio de velocidad del agua en la bomba y la altura que sube.
+$$\cancelto{0}{\dot{U}_{V.C.}} = \dot{Q} - \dot{W} - \dot{m}(\Delta h +\cancelto{0}{ \Delta ec}+\cancelto{0}{  \Delta ep}) = 0  $$ 
+
+$$\dot{Q}=\dot{W}_e+\dot{m} \cdot \Delta h $$
+
+Y de la segunda ley aplicada a V.C. se llega a que:
+
+$$\dot{S}_{gen}=\dot{m}(s_{out}-s_{in})-\frac{\dot{Q}}{T_0} $$
+ 
+ En ambos casos el caudal másico será calculado dividiendo la masa de agua que se obtiene en el balde por el tiempo que tardó:
+ 
+$$\dot{m}=\frac{\Delta m}{\Delta t}$$
+Ya que el calor disipado por la bomba es despreciable frente al del motor, podemos considerar que todo el calor lo disipa el motor, y que la bomba es adiabática. Y sabiendo que se desprecia la energía cinética y potencial, y que las medidas se toman en régimen estacionario, el trabajo entonces es igual al opuesto de la variación de la entalpía y así la eficiencia se calcula:
+
+$$\eta_s=\frac{w_s}{w}=\frac{\Delta h_s}{\Delta h}$$
+Para obtener las eficiencia del motor eléctrico y de todo el conjunto respectivamente se calcularán de la siguiente manera:
+
+$$\eta _e =\frac{\dot{m} \cdot \Delta h}{\dot{W}_e} $$
+$$\eta = \frac{\dot{m}\cdot \Delta h_s}{\dot{W}_e}$$
+
+Por definición la potencia termodinamicamente perdida es:
+
+$$\dot{W}_{TermPerdida}=T_0 \cdot \dot{S}_{gen} $$
+
+Y finalmente se hará un análisis exergético donde se calcula la variación de exergía y la exergía destruída de la siguiente manera:
+
+$$ \Delta a=\Delta h -T_0 (s_{out}-s_{in}) $$
+
+$$ \dot{A}_{destruida}=-\dot{W}_e-\dot{m} \Delta a$$
+
+Los valores de entropía específica, entalpía específica y volumen específico serán obtenidos interpolando de la tabla de \textit{Fundamentals of Engineering Thermodynamics.} \cite{moranshap}
+
+
+ 
+ 
+\subsection{Instrumentos}
+
+Para realizar el experimento se usaron los siguientes instrumentos e implementos:
+\begin{itemize}
+\item Termómetro
+\item Manómetro
+\item Balanza
+\item Cronómetro
+\item Vatímetro
+\item Balde
+\end{itemize}
+\begin{figure}
+\includegraphics[width=\textwidth]{fotos/setup.jpeg}
+\caption{Disposición de instrumentos}
+\end{figure}
+\begin{figure}
+\includegraphics[width=\textwidth]{setup_Termod.pdf}% Si, corten el chamuyex
+\caption{Esquema de sistema medido}
+\end{figure}
+\subsection{Método y Proceso}
+Para realizar las mediciones se comenzó por regular la presión manométrica de una bomba, cuya función consistió en tomar agua de un recipiente e introducirla nuevamente en el mismo. 
+Una vez estable la presión, se cargó agua de la salida de la bomba en un balde, y se procedió a pesarlo para obtener la masa cargada, cronometrando el procedimiento para realizarlo en un tiempo fijo de 10 segundos. A su vez, se midió la potencia entregada por el motor durante el llenado del balde, la presión de entrada (calculada midiendo la columna de agua ) y las temperaturas de salida, entrada y ambiental.
+$$ P_{in} = \rho h g  $$
+Tomando $\rho = 1000kg/m^3$  , $ h = cte = 700mm $ y $ g = 9,81 m/s^2 $ como valores nominales.
+Se realizaron sucesivas mediciones, variando levemente la presión.
+
+\clearpage
+\section{Datos}
+	\subsection{Obtenidos}
+	\begin{table}[!h]%=============== Comienzo de tabla
+	\label{T:equipos}
+	\begin{center}
+	\begin{tabular}{| c | c | c | c | c | c | c | c |} 
+	\hline
+	\textbf{Datos Medidos} & \multicolumn{7}{ c |}{\textbf{Medición}}  \\ 
+	\cline{2-8}
+	& \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5}&\textbf{6}&\textbf{7}\\
+	\hline
+    
+	$p_{in}$ (kPa)&6.8647&6.8647&6.8647&6.8647&6.8647&6.8647&6.8647\\ \hline
+	$ p_{out} $ (kPa) &100  &110   &115 &120  &125  &130 &135 \\ \hline
+	Masa (kg)& 10.0  & 8.0 &7.2  &6.0  &4.8& 3.7 &2.5\\ \hline
+	Tiempo (s) &10.0 &10.0 &10.2  &10.2  &10.1 &10.4 &10.4\\ \hline
+	Potencia (kW) &1.02  & 1.00  &0.97  & 0.96 &0.93 & 0.91&0.88\\ \hline
+
+
+
+\end{tabular}
+\end{center}
+\end{table} %================    Fin de Tabla
+\subsection{Calculados}
+		\begin{table}[!h]%=============== Comienzo de tabla
+	\label{T:equipos}
+	\begin{center}
+	\begin{tabular}{| c | c | c | c | c | c | c | c |} 
+	\hline
+	\textbf{Prop. Termodinámicas} & \multicolumn{7}{ c |}{\textbf{Medición}}  \\ 
+	\cline{2-8}
+	& \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5}&\textbf{6}&\textbf{7}\\
+	\hline
+    
+	$v_{in}$ ($m^3/kg$)&0.001  &0.001  &0.001  &0.001 &0.001 &0.001 &0.001 \\ \hline
+	$ v_{out} $ ($m^3/kg$) &0.001  &0.001   &0.001 &0.001  &0.001  &0.001 &0.001 \\ \hline
+	$ h_{in} $ ($kJ/kg$)& 83.12 & 83.54 &83.54  &83.96  &83.96& 84.38 &84.38\\ \hline
+    $ h_{out}$ ($kJ/kg$) &83.96&84.38 &84.80 &85.22 &85.22 &85.63 &86.89 \\ \hline
+	$ h_{Sout} $ ($kJ/kg$)&83.22 &83.64  &83.65  &84.07 &84.08 &84.50 &84.51\\ \hline
+	$  s_{in} $ ($kJ/kg.K$)&0.294  &0.295  &0.295  & 0.297 &0.297 & 0.298&0.298\\ \hline
+    $ s_{out} $ ($kJ/kg.K$)&0.297  &0.299 &0.302 &0.305  &0.305  &0.308 &0.316 \\ \hline
+
+
+
+\end{tabular}
+\end{center}
+\end{table} %================    Fin de Tabla
+        \vspace{0cm}
+        \begin{table}[!h]%=============== Comienzo de tabla
+
+	\label{T:equipos}
+	\begin{center}
+	\begin{tabular}{| c | c | c | c | c | c | c | c |} 
+	\hline
+	\textbf{Análisis}\\ \textbf{de Rendimiento} & \multicolumn{7}{ c |}{\textbf{Medición}}  \\ 
+	\cline{2-8}
+	& \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5}&\textbf{6}&\textbf{7}\\
+	\hline
+    
+	$\eta _{s}$ &0.111  &0.123  &0.0862  &0.0903 &0.0942 &0.0982 &0.0511 \\ \hline
+	$ \eta_{motor} $  &0.690  &0.670   &0.913 &0.784  &0.641  &0.490 &0.685 \\ \hline
+	$ \eta_{conjunto} $ & 0.0768  & 0.0827 & 0.0788 & 0.0694 &0.0605& 0.0482 &0.0351\\ \hline
+	
+
+
+
+\end{tabular}
+\end{center}
+\end{table} %================    Fin de Tabla
+        \vspace{5cm}
+             \begin{table}[!h]%=============== Comienzo de tabla
+
+	\label{T:equipos}
+	\begin{center}
+	\begin{tabular}{| c | c | c | c | c | c | c | c |} 
+	\hline
+	\textbf{Análisis de calor} \\ \textbf{y entropía}& \multicolumn{7}{ c |}{\textbf{Medición}}  \\ 
+	\cline{2-8}
+	& \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5}&\textbf{6}&\textbf{7}\\
+	 \hline
+    
+	$\dot{Q}$ ($W$)& -315.4 &-329.6  &-83.0  &-221.3 &-333.2 &-463.2 &-276.3 \\ \hline
+	$ \dot{S}_{gen}$ ($W/K$) &3.50  &4.57   &5.34 &5.80  &5.21  &5.14 &5.41 \\ \hline
+	$ \dot{W}_{TermPerdida}$ ($kW$) & 1.02  & 1.34 & 1.56 & 1.70 &1.53& 1.50 &1.58\\ \hline
+    $ \Delta a$ ($kJ/kg$) &0.001  &-0.418  &-0.837  &-1.253  &-1.257  &-1.676  &-2.933 \\ \hline     $\dot{A}_{destruida}$ ($kW$) &1.02 &1.34 &1.56 &1.70 &1.53 &1.50 &1.58  \\ \hline
+	
+
+
+
+\end{tabular}
+\end{center}
+
+\end{table} %================    Fin de Tabla
+\vspace{3cm}
+\section{Gráficos}
+\includegraphics[width=\textwidth]{Graficos/graf1.pdf}
+\includegraphics[width=\textwidth]{Graficos/graf3.pdf}
+\includegraphics[width=\textwidth]{Graficos/graf4.pdf}
+\includegraphics[width=\textwidth]{Graficos/graf5.pdf}
+\includegraphics[width=\textwidth]{Graficos/graf6.pdf}
+\includegraphics[width=\textwidth]{Graficos/graf2.pdf}
+\clearpage
+
+\section{Conclusión}
+Si la potencia entregada a la bomba fuera constante, el aumento de la presión debería disminuir el caudal másico, y de la misma manera, si se mantuviera constante la presión y se disminuyera la potencia entregada, el caudal másico debería disminuir. La suma de estos dos a la vez aseguran que el caudal másico disminuya así como se vió en el experimento. Junto a esto la entropía generada por unidad de tiempo y la exergía destruída por unidad de tiempo por lo contrario aumentan, que es algo lógico para un proceso no reversible. Las eficiencias dieron menor de lo esperado, pero considerando que los procesos en la vida real no son reversibles nunca se llega a la máxima eficiencia.
+
+
+%Conclusión revision 2
+
+%	En la presente experiencia se pudo observar como modificando  solamente una variable termodinámica ( la presión a  la salida  de la bomba  en este caso), se altera el resto de las variables involucradas. 
+
+%Conclusion revision parte 2 (despues las juntamos)
+
+	Se puede apreciar unas discrepancias de los datos con la realidad. Por ejemplo, al calcular la exergía destruida para la medición 6 nos da un valor cercano a 0 comparado a las otras exergías destruidas. Esto puede ser fruto de valores de temperaturas que no cambian a medida que aumenta la potencia del motor. Vale la pena notar que los valores de temperatura son artificiales y no fueron medidos en el experimento pero dados por los docentes.
+\\
+	
+    Finalmente, cabe destacar que los valores para exergía destruida ($\Delta a$) resultaron negativos. Esto no encaja para nada con la realidad pues cuando se entrega  a un sistema la exergía solo puede aumentar. A pesar de este conflicto, usando la exergía negativa obtenida nos da valores de $\dot{A}_{destruida}$ que concuerdan con los valores de potencia termodinámica destruida. Esto puede significar que las aproximaciones realizadas afectan los resultados o que hay un problema mas profundo con los valores medidos u obtenidos. Este ultimo punto se hace para alentar comentario critico de la comunidad académica.
+\begin{thebibliography}{9}
+
+\bibitem{moranshap} 
+Moran, Michael J., and Howard N. Shapiro. 
+\textit{Fundamentals of Engineering Thermodynamics.} 
+John Wiley \& Sons, 2008.
+\end{thebibliography}
+\end{document} 
+
