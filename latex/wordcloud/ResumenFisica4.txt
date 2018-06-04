@@ -40,6 +40,10 @@ output-decimal-marker = {,} %Esto decide si el separador decimal es coma o punto
 \newcommand{\ojo}{\text{\faExclamation}}
 
 %
+\newcommand{\spartial}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\dpartial}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\uno}{\textrm{I}}
+\newcommand{\dos}{\textrm{II}}
 \newcommand{\lorenz}{\frac{1}{\sqrt[]{1-\frac{v^2}{c^2}}}}
 \newcommand{\Psixt}{\Psi (x,t)}
 \newcommand{\psix}{\psi (X)}
@@ -99,6 +103,7 @@ output-decimal-marker = {,} %Esto decide si el separador decimal es coma o punto
 
 {\tiny Algunas letras pueden tomar diferentes sentidos dependiendo del contexto. Por ejemplo, en este documento se va tener en cuenta que $m$ puede ser masa aparente o masa en reposo mientras que $m_0$ siempre es masa en reposo. Noten que el libro siempre usa $m$ para representar masa en reposo.}
  }
+ \part{Primer Parcial}
 \section{Relatividad Especial}
 
 \begin{align*}
@@ -275,6 +280,7 @@ $$\Delta E =\frac{Z_{\textrm{eff}}^2e^4 \mu }{2(4\pi\varepsilon_0)^2\hbar^2} \in
 
 
 %-------------------> Mecanica Cuantica
+\part{Segundo Parcial}
 \section{Mecánica Cuántica}
 \subsection{Principio de la Incertidumbre}
 No se puede medir simultáneamente y con precisión arbitraria la posición y $\vec{p}$ de un objeto cuántico. Sean $\Delta x$ y $\Delta p$ los errores en una medición ($\Delta t$ es un \emph{intervalo} de tiempo).
@@ -298,11 +304,11 @@ $$\Psi^{*}.\Psi = \big( \Psi(\vec{r},t)\big)^2 $$
 $$ \int_\Omega |\Psi(\vec{r},t)|^2\partial w $$
 
 \textbf{Hipótesis 3.} La función de onda es solución de la ecuación de Schrödinger
-\begin{equation} \label{schroddiff}
-\frac{\hbar }{2m} \nabla^2 \Psi(\vec{r},t)+U(\vec{r},t)\Psi(\vec{r},t)=i\hbar \frac{\partial \Psi(\vec{r},t)}{\partial t} 
+\begin{equation} \label{schrod}
+\frac{\hbar^2 }{2m} \nabla^2 \Psi(\vec{r},t)+U(\vec{r},t)\Psi(\vec{r},t)=i\hbar \frac{\partial \Psi(\vec{r},t)}{\partial t} 
 \end{equation}
 
-Si consideramos una función de potencial independiente del tiempo podemos separar la función densidad de tal forma que $\Psi (\vec{r},t)=\psi(\vec{r}) \Phi(t)$. Aprovechando esta separación de variables podemos despejar la ecuación de Schrödinger \eqref{schroddiff} de tal forma que un lado depende de $\vec{r}$ y el otro depende de $t$: 
+Si consideramos una función de potencial independiente del tiempo podemos separar la función densidad de tal forma que $\Psi (\vec{r},t)=\psi(\vec{r}) \Phi(t)$. Aprovechando esta separación de variables podemos despejar la ecuación de Schrödinger \eqref{schrod} de tal forma que un lado depende de $\vec{r}$ y el otro depende de $t$: 
 $$\frac{1}{\psi(\vec{r})}\bigg[ -\frac{\hbar^2}{2m}\nabla^2 \psi(\vec{r}) +U(\vec{r})\psi(\vec{r}) \bigg]=\frac{i\hbar}{\Phi(t)}\frac{\partial \Phi(t)}{\partial t} =\lambda $$
 $\lambda$ se conoce como la constante de separación por la misma razón por la que a esta técnica para resolver ecuaciones diferenciales parciales se llama separación de variables. \par
 Para ejercicios en una dimensión (1D) se tiene:
@@ -329,11 +335,20 @@ El termino $A^\prime e^{ i(kx-wt) }$ describe un frente de onda con sentido en $
 $$\Psixt= \psix Ce^{-iwt} $$
 $$ |\Psixt |^2=|\psix|^2C^2 $$
 $$\Psixt =\psix e^{-i\omega t} $$
-$$    $$
+\section{Ecuación de Continuidad}
+Generalizacion del principio \emph{conservacion de la carga fuente}. El signo de la derivada parcial de $\rho$ respecto $t$ indica si es fuente(+) o sumidero(-).
+$$ \nabla \cdot \vec{J} =-\spartial{\rho}{t}  $$
+De la ecuación \eqref{schrod} sale
+
+$$j_x=\frac{\hbar i}{2m} \inpar{\Psixt  \spartial{\Psi^*(x,t)}{x} -\Psi^*(x,t) \spartial{\Psixt}{x} } $$ 
+Tal que:
+$$\spartial{j_x}{x}=-\spartial{P(x,t)}{t}$$
+Ademas, como siempre trabajamos con problemas \emph{conservativos}, $\Psixt=\psix e^{-i\omega t}$
+
 \clearpage
 %Anexo----------------->
-\section{Anexo}
-\subsection{Constantes}
+\part{Anexo}
+\section*{Constantes}
 \begin{align*}
 e&=\SI{1.602e-19}{\coulomb}\\
 h&=\SI{6.626e-34}{\meter \squared \kg \per \second}\\
@@ -356,7 +371,7 @@ G  &=\SI{6.674e-11}{\meter \cubed \per \kilogram \per \second \squared}\\
 \end{align*}
 
 
-\subsection{Tablas}
+\section*{Tablas}
 \begin{table}[h]
 \centering
 \begin{tabular}{@{}lll@{}}

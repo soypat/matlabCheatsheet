@@ -1,6 +1,7 @@
 function [] = latex_wordcloud(filename)
 %Crea un wordcloud de las funciones de un archivo latex
 %Ejemplo:  latex_wordcloud('latextext.txt')
+%          latex_wordcloud('mi_TP_de_fisica_4.tex')
 %Version R2017b y adelante
 fileID=fopen(filename);
 doubleskip=false;
